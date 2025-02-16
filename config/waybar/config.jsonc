@@ -1,0 +1,22 @@
+{
+    "include": "~/.config/waybar/modules",
+    "layer": "top",
+    "position": "top",
+    "height": 0,
+    "modules-left": [
+        "hyprland/workspaces", 
+        "clock", 
+        "network"
+    ],
+    "modules-center": [
+      "custom/playerctl"
+    ],
+    "modules-right": [
+        "custom/cava_mviz",
+        "tray",
+        "cpu",
+        "memory",
+        "pulseaudio",
+        "custom/swaync"
+    ],
+}
