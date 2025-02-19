@@ -8,7 +8,7 @@ if [ -n "$SSH_CLIENT" ]; then
 fi
 
 PROMPT='
-%{$fg_bold[green]%}[%{$reset_color%}%{$fg_bold[${host_color}]%}%n@%m%{$reset_color%}%{$fg_bold[green]%}]%{$reset_color%} %{$fg_bold[blue]%}%10c%{$reset_color%}
+%{$fg_bold[red]%}[%{$reset_color%}%{$fg_bold[${host_color}]%}%n@%m%{$reset_color%}%{$fg_bold[red]%}]%{$reset_color%} %{$fg_bold[blue]%}%10c%{$reset_color%}
 %{$fg_bold[cyan]%}❯%{$reset_color%} '
 
 
