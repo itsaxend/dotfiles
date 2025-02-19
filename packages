@@ -28,5 +28,6 @@ hyprpolkitagent-git
 hyprwayland-scanner-git
 hyprland-qt-support-git
 hyprland-qtutils-git
+lua-language-server
 vscode-html-languageserver
 vscode-css-languageserver
