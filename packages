@@ -1,12 +1,11 @@
+---- pacman ----
 waybar
-wallust
 neovim
 swaync
 swww
 grim
 mpv
 imv
-cava
 wl-clipboard
 rofi-wayland
 imagemagick
@@ -18,16 +17,16 @@ playerctl
 nwg-look
 gvfs
 brightnessctl
-hyprutils-git
-hyprcursor-git
-hyprland-git
-hyprgraphics-git
-hyprlang-git
-hyprland-protocols-git
-hyprpolkitagent-git
-hyprwayland-scanner-git
-hyprland-qt-support-git
-hyprland-qtutils-git
+noto-fonts
+noto-fonts-emoji
+cantarell-fonts
+ttf-jetbrains-mono-nerd
+ttf-fira-code
 lua-language-server
 vscode-html-languageserver
 vscode-css-languageserver
+
+---- yay ----
+wallust
+cava
+hyprland-meta-git | "this will install Hypr Ecosystem but i hate lock and idle so i never use hypridle and hyprlock. also, i dont use hyprpicker and hyprsunset as theyre useless for me. i have swww so i dont need hyprpaper too."
