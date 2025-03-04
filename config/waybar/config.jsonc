@@ -16,6 +16,7 @@
         "tray",
         "cpu",
         "memory",
+        "battery",
         "pulseaudio",
         "custom/swaync"
     ],
