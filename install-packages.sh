@@ -1,6 +1,10 @@
 #!/bin/bash
 
 pacman_packages=(
+    "thunar"
+    "thunar-volman"
+    "tumbler"
+    "catfish"
     "waybar"
     "neovim"
     "swaync"
