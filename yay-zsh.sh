@@ -27,13 +27,6 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 else
-    echo "Oh My Zsh is already installed. Skipping..."
-fi
-
-# Set Zsh as default shell
-if [[ "$SHELL" != *"zsh"* ]]; then
-    chsh -s $(which zsh)
-    echo "Default shell changed to Zsh. Log out and log back in for changes to take effect."
-else
-    echo "Zsh is already the default shell."
+    echo "Oh My Zsh is already installed."
+    exit 1
 fi

@@ -1,10 +1,21 @@
 #!/bin/bash
 
 pacman_packages=(
+    "qt5-base"
+    "qt5-wayland"
+    "qt6-base"
+    "qt6-wayland"
+    "pipewire"
+    "wireplumber"
+    "pipewire-audio"
+    "sof-firmware"
     "thunar"
     "thunar-volman"
     "tumbler"
-    "catfish"
+    "fcitx5"
+    "fcitx5-configtool"
+    "fcitx5-unikey"
+    "kwindowsystem"
     "waybar"
     "neovim"
     "swaync"
@@ -90,11 +101,16 @@ uninstall_specified_packages() {
     done
 }
 
-echo "Ready to install packages? (y/n)"
-read -r action
-if [[ $action == "y" || $action == "yes" ]]; then
-    echo "Wanna remove specified packages? (y/n)"
-    read -r rsp
+echo ""
+sleep 0.5
+echo "$(tput setaf 196)HEAD UP !!! This script is just for my personal use.$(tput sgr0)"
+echo "$(tput setaf 184)You should cancel this by hitting CTRL-C and read the script before starting.$(tput sgr0)"
+echo ""
+sleep 0.5
+
+read -rp "Ready to install packages? (y/n): " install 
+if [[ $install == "y" || $install == "yes" ]]; then
+    read -rp "Wanna remove specified packages? (y/n): " rsp
     if [[ $rsp == "y" || $rsp == "yes" ]]; then
         install_pacman_packages
         install_yay_packages
@@ -106,9 +122,10 @@ if [[ $action == "y" || $action == "yes" ]]; then
         install_yay_packages
         echo "Skipped removing specified packages." 
         echo "Done!"
+    else
+        echo "Invalid option, choose 'y' or 'n'"
+        exit 1
     fi
-    echo "Invalid option, choose 'y' or 'n'"
-    exit 1
 else
     echo "Exiting."
     exit 1
