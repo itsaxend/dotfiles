@@ -75,7 +75,7 @@ uninstall_packages=(
 )
 
 install_pacman_packages() {
-    echo "Updating system and refreshing pacman database..."
+    echo "Updating system ..."
     sudo pacman -Syu --noconfirm
 
     echo "Installing pacman packages..."
@@ -101,6 +101,16 @@ uninstall_specified_packages() {
     done
 }
 
+amd() {
+  echo "Installing amd-ucode ..."
+  sudo pacman -S --noconfirm amd-ucode
+}
+
+intel() {
+  echo "Installing intel-ucode ..."
+  sudo pacman -S --noconfirm intel-ucode
+}
+
 echo ""
 sleep 0.5
 echo "$(tput setaf 196)HEAD UP !!! This script is just for my personal use.$(tput sgr0)"
@@ -110,21 +120,48 @@ sleep 0.5
 
 read -rp "Ready to install packages? (y/n): " install 
 if [[ $install == "y" || $install == "yes" ]]; then
-    read -rp "Wanna remove specified packages? (y/n): " rsp
-    if [[ $rsp == "y" || $rsp == "yes" ]]; then
-        install_pacman_packages
-        install_yay_packages
-        uninstall_specified_packages
-        echo "Removed specified packages."
-        echo "Done!"
-    elif [[ $rsp == "n" || $rsp == "no" ]]; then
-        install_pacman_packages
-        install_yay_packages
-        echo "Skipped removing specified packages." 
-        echo "Done!"
+    read -rp "AMD or Intel CPU? " cpu
+    if [[ $cpu == "amd" || $cpu == "AMD" ]]; then
+        read -rp "Wanna remove specified packages? (y/n): " rsp
+        if [[ $rsp == "y" || $rsp == "yes" ]]; then
+            amd
+            install_pacman_packages
+            install_yay_packages
+            uninstall_specified_packages
+            echo "Removed specified packages."
+            echo "Done!"
+        elif [[ $rsp == "n" || $rsp == "no" ]]; then
+            amd
+            install_pacman_packages
+            install_yay_packages
+            echo "Skipped removing specified packages." 
+            echo "Done!"
+        else
+            echo "Invalid option, choose 'y' or 'n'"
+            exit 1
+        fi
+    elif [[ $cpu == "intel" || $cpu == "Intel" ]]; then
+        read -rp "Wanna remove specified packages? (y/n): " rsp
+        if [[ $rsp == "y" || $rsp == "yes" ]]; then
+            intel
+            install_pacman_packages
+            install_yay_packages
+            uninstall_specified_packages
+            echo "Removed specified packages."
+            echo "Done!"
+        elif [[ $rsp == "n" || $rsp == "no" ]]; then
+            intel
+            install_pacman_packages
+            install_yay_packages
+            echo "Skipped removing specified packages." 
+            echo "Done!"
+        else
+            echo "Invalid option, choose 'y' or 'n'"
+            exit 1
+        fi
     else
-        echo "Invalid option, choose 'y' or 'n'"
-        exit 1
+        echo "Invalid input. type 'amd' or 'intel'"
+        exit 1 
     fi
 else
     echo "Exiting."
