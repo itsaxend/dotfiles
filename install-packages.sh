@@ -23,6 +23,7 @@ pacman_packages=(
     "grim"
     "mpv"
     "imv"
+    "wf-recorder"
     "wl-clipboard"
     "rofi-wayland"
     "imagemagick"
