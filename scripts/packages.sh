@@ -15,6 +15,7 @@ pacman_packages=(
     "fcitx5"
     "fcitx5-configtool"
     "fcitx5-unikey"
+    "fastfetch"
     "kwindowsystem"
     "waybar"
     "neovim"
