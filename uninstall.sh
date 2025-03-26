@@ -18,7 +18,6 @@ pacman_packages=(
     "fastfetch"
     "kwindowsystem"
     "waybar"
-    "neovim"
     "swaync"
     "swww"
     "grim"
@@ -68,21 +67,34 @@ yay_packages=(
 )
 
 
-install_pacman_packages() {
-    echo "Updating system ..."
-    sudo pacman -Syu --noconfirm
-
-    echo "Installing pacman packages..."
+uninstall_pacman_packages() {
+    echo "Uninstalling pacman packages..."
     for package in "${pacman_packages[@]}"; do
-        echo "Installing $package..."
+        echo "Uninstalling $package..."
         sudo pacman -Rns --noconfirm "$package"
     done
 }
 
-install_yay_packages() {
-    echo "Installing yay packages..."
+uninstall_yay_packages() {
+    echo "Uninstalling yay packages..."
     for package in "${yay_packages[@]}"; do
-        echo "Installing $package..."
+        echo "Uninstalling $package..."
         yay -Rns --noconfirm "$package"
     done
 }
+
+read -rp "Sure to uninstall hyprland? (y/n): " uns 
+if [[ $uns == "y" || $uns == "yes" ]]; then
+    uninstall_pacman_packages
+    uninstall_yay_packages
+    rm -rf ~/.config/cava
+    rm -rf ~/.config/rofi
+    rm -rf ~/.config/swaync
+    rm -rf ~/.config/waybar
+    rm -rf ~/.config/wallust
+    echo "Uninstalled hyprland"
+    echo "Done!"
+else
+    echo "Exiting"
+    exit 1
+fi
