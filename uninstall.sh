@@ -15,7 +15,6 @@ pacman_packages=(
     "fcitx5"
     "fcitx5-configtool"
     "fcitx5-unikey"
-    "fastfetch"
     "kwindowsystem"
     "waybar"
     "swaync"
@@ -50,9 +49,6 @@ pacman_packages=(
     "ttf-arphic-ukai"
     "ttf-indic-otf"
     "ttf-sazanami"
-    "lua-language-server"
-    "vscode-html-languageserver"
-    "vscode-css-languageserver"
 )
 
 yay_packages=(
