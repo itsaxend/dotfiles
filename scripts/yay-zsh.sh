@@ -3,7 +3,7 @@
 set -e  # Exit on error
 
 # Install dependencies for yay
-sudo pacman -S --needed --noconfirm git base-devel
+sudo pacman -S --needed --noconfirm base-devel
 
 # Clone and install yay if not already installed
 if ! command -v yay &> /dev/null; then

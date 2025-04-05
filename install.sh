@@ -11,7 +11,7 @@ read -rp "Start install? (y/n): " begin
 if [[ $begin == "y" || $begin == "yes" ]]; then
     echo "Updating system ..."
     sudo pacman -Syu --noconfirm
-    sudo pacman -S --needed --noconfirm git base-devel linux-zen-headers
+    sudo pacman -S --needed --noconfirm base-devel linux-zen-headers
 
     if ! command -v yay &> /dev/null; then
         git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
