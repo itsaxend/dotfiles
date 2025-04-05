@@ -33,7 +33,7 @@ cp -rf ~/dotfiles/Bibata-Modern-Ice/ ~/.local/share/icons/
 sudo cp -rf ~/dotfiles/Bibata-Modern-Ice/ /usr/share/icons/ 
 
 if [ -d "~/.oh-my-zsh/" ]; then
-    rm -rf ~/.oh-my-zsh/
+    rm -rf ~/.oh-my-zsh
 fi
 
 if [ -f "~/.zshrc" ]; then
