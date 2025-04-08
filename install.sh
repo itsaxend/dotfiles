@@ -13,15 +13,7 @@ if [[ $begin == "y" || $begin == "yes" ]]; then
     sudo pacman -Syu --noconfirm
     sudo pacman -S --needed --noconfirm base-devel linux-zen-headers
 
-    if ! command -v yay &> /dev/null; then
-        git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
-        cd /tmp/yay-bin
-        makepkg -si --noconfirm
-        cd -
-        rm -rf /tmp/yay-bin
-    else
-        echo "yay is already installed. Skipping..."
-    fi
+    bash /scripts/yay.sh 
 else
     echo "Exiting ..."
     exit 1 

@@ -24,6 +24,9 @@ ln -sf ~/dotfiles/config/waybar/ ~/.config/
 ln -sf ~/dotfiles/config/wallust/ ~/.config/
 ln -sf ~/dotfiles/config/fastfetch/ ~/.config/
 
+if [ ! -d "~/Pictures" ]; then
+    mkdir -p ~/Pictures
+fi
 ln -sf ~/dotfiles/Wallpapers/ ~/Pictures/
 
 if [ ! -d "~/.local/share/icons" ]; then
