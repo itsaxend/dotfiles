@@ -54,26 +54,16 @@ pacman_packages=(
     "lua-language-server"
     "vscode-html-languageserver"
     "vscode-css-languageserver"
+    "hyprland"
+    "hyprlang"
+    "hyprutils"
+    "xdg-desktop-portal-hyprland"
+    "xdg-desktop-portal-gtk"
 )
 
 yay_packages=(
     "wallust"
     "cava"
-    "hyprland-meta-git"
-)
-
-uninstall_packages=(
-    "hypridle-git"
-    "hypride-git-debug"
-    "hyprlock-git"
-    "hyprlock-git-debug"
-    "hyprpicker-git"
-    "hyprpicker-git-debug"
-    "hyprsunset-git"
-    "hyprsunset-git-debug"
-    "hyprpaper-git"
-    "hyprpaper-git-debug"
-    "hyprland-meta-git"
 )
 
 install_pacman_packages() {
@@ -95,14 +85,6 @@ install_yay_packages() {
     done
 }
 
-uninstall_specified_packages() {
-    echo "Uninstalling specified packages..."
-    for package in "${uninstall_packages[@]}"; do
-        echo "Removing $package..."
-        sudo pacman -Rns --noconfirm "$package" || yay -Rns --noconfirm "$package"
-    done
-}
-
 amd() {
   echo "Installing amd-ucode ..."
   sudo pacman -S --noconfirm amd-ucode
@@ -117,43 +99,15 @@ read -rp "Ready to install packages? (y/n): " install
 if [[ $install == "y" || $install == "yes" ]]; then
     read -rp "AMD or Intel CPU? " cpu
     if [[ $cpu == "amd" || $cpu == "AMD" ]]; then
-        read -rp "Wanna remove specified packages? (y/n): " rsp
-        if [[ $rsp == "y" || $rsp == "yes" ]]; then
-            amd
-            install_pacman_packages
-            install_yay_packages
-            uninstall_specified_packages
-            echo "Removed specified packages."
-            echo "Done!"
-        elif [[ $rsp == "n" || $rsp == "no" ]]; then
-            amd
-            install_pacman_packages
-            install_yay_packages
-            echo "Skipped removing specified packages." 
-            echo "Done!"
-        else
-            echo "Invalid option, choose 'y' or 'n'"
-            exit 1
-        fi
+        amd
+        install_pacman_packages
+        install_yay_packages
+        echo "Done!"
     elif [[ $cpu == "intel" || $cpu == "Intel" ]]; then
-        read -rp "Wanna remove specified packages? (y/n): " rsp
-        if [[ $rsp == "y" || $rsp == "yes" ]]; then
-            intel
-            install_pacman_packages
-            install_yay_packages
-            uninstall_specified_packages
-            echo "Removed specified packages."
-            echo "Done!"
-        elif [[ $rsp == "n" || $rsp == "no" ]]; then
-            intel
-            install_pacman_packages
-            install_yay_packages
-            echo "Skipped removing specified packages." 
-            echo "Done!"
-        else
-            echo "Invalid option, choose 'y' or 'n'"
-            exit 1
-        fi
+        intel
+        install_pacman_packages
+        install_yay_packages
+        echo "Done!"
     else
         echo "Invalid input. type 'amd' or 'intel'"
         exit 1 

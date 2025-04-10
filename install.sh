@@ -13,16 +13,16 @@ if [[ $begin == "y" || $begin == "yes" ]]; then
     sudo pacman -Syu --noconfirm
     sudo pacman -S --needed --noconfirm base-devel linux-zen-headers
 
-    bash /scripts/yay.sh 
+    bash ./scripts/yay.sh 
 else
     echo "Exiting ..."
     exit 1 
 fi
 
 echo "installing packages ..."
-bash /scripts/packages.sh
+bash ./scripts/packages.sh
 
 echo "Symlink ..."
-bash /scripts/symlink.sh
+bash ./scripts/symlink.sh
 echo "Done!"
 exit 1
