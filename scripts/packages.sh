@@ -57,6 +57,8 @@ pacman_packages=(
     "hyprland"
     "hyprlang"
     "hyprutils"
+    "hyprgraphics"
+    "hyprcursor"
     "hyprpolkitagent"
     "hyprland-qtutils"
     "hyprland-protocols"
