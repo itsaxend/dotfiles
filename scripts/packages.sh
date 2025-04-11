@@ -57,6 +57,8 @@ pacman_packages=(
     "hyprland"
     "hyprlang"
     "hyprutils"
+    "hyprpolkitagent"
+    "hyprland-qtutils"
     "hyprland-protocols"
     "hyprland-qt-support"
     "xdg-desktop-portal-hyprland"
