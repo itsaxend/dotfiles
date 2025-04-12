@@ -54,6 +54,15 @@ pacman_packages=(
     "lua-language-server"
     "vscode-html-languageserver"
     "vscode-css-languageserver"
+    
+)
+
+yay_packages=(
+    "wallust"
+    "cava"
+)
+
+hyprland_stable=(
     "hyprland"
     "hyprlang"
     "hyprutils"
@@ -67,9 +76,18 @@ pacman_packages=(
     "xdg-desktop-portal-gtk"
 )
 
-yay_packages=(
-    "wallust"
-    "cava"
+hyprland_git=(
+    "hyprland-git"
+    "hyprlang-git"
+    "hyprutils-git"
+    "hyprgraphics-git"
+    "hyprcursor-git"
+    "hyprpolkitagent-git"
+    "hyprland-qtutils-git"
+    "hyprland-protocols-git"
+    "hyprland-qt-support-git"
+    "xdg-desktop-portal-hyprland-git"
+    "xdg-desktop-portal-gtk-git"
 )
 
 install_pacman_packages() {
@@ -101,19 +119,60 @@ intel() {
   sudo pacman -S --noconfirm intel-ucode
 }
 
+install_hyprland_stable() {
+    echo "Installing hyprland stable version..."
+    for package in "${hyprland_stable[@]}"; do
+        echo "Installing $package..."
+        sudo pacman -S --noconfirm "$package"
+    done
+}
+
+install_hyprland_git() {
+    echo "Installing hyprland git version..."
+    for package in "${hyprland_git[@]}"; do
+        echo "Installing $package..."
+        yay -S --noconfirm "$package"
+    done
+}
+
 read -rp "Ready to install packages? (y/n): " install 
 if [[ $install == "y" || $install == "yes" ]]; then
-    read -rp "AMD or Intel CPU? " cpu
+  read -rp "AMD or Intel CPU? (amd/intel): " cpu
     if [[ $cpu == "amd" || $cpu == "AMD" ]]; then
-        amd
-        install_pacman_packages
-        install_yay_packages
-        echo "Done!"
+        read -rp "Hyprland stable or git version? (stable/git): " hypr
+          if [[ $hypr == "stable" || $hypr == "s" ]]; then
+            amd
+            install_pacman_packages
+            install_yay_packages
+            hyprland_stable
+            echo "Done!"
+          elif [[ $hypr == "git" || $hypr == "g" ]]; then
+            amd
+            install_pacman_packages
+            install_yay_packages
+            hyprland_git
+            echo "Done!"
+          else
+            echo "Invalid option, type 'stable' or 'git'"
+            exit 1
+          fi
     elif [[ $cpu == "intel" || $cpu == "Intel" ]]; then
-        intel
-        install_pacman_packages
-        install_yay_packages
-        echo "Done!"
+        if [[ $hypr == "stable" || $hypr == "s" ]]; then
+            intel
+            install_pacman_packages
+            install_yay_packages
+            hyprland_stable
+            echo "Done!"
+          elif [[ $hypr == "git" || $hypr == "g" ]]; then
+            intel
+            install_pacman_packages
+            install_yay_packages
+            hyprland_git
+            echo "Done!"
+          else
+            echo "Invalid option, type 'stable' or 'git'"
+            exit 1
+          fi
     else
         echo "Invalid input. type 'amd' or 'intel'"
         exit 1 
