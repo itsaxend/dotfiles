@@ -157,7 +157,8 @@ if [[ $install == "y" || $install == "yes" ]]; then
             exit 1
           fi
     elif [[ $cpu == "intel" || $cpu == "Intel" ]]; then
-        if [[ $hypr == "stable" || $hypr == "s" ]]; then
+        read -rp "Hyprland stable or git version? (stable/git): " hypr
+          if [[ $hypr == "stable" || $hypr == "s" ]]; then
             intel
             install_pacman_packages
             install_yay_packages
