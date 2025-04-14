@@ -144,13 +144,13 @@ if [[ $install == "y" || $install == "yes" ]]; then
             amd
             install_pacman_packages
             install_yay_packages
-            hyprland_stable
+            install_hyprland_stable
             echo "Done!"
           elif [[ $hypr == "git" || $hypr == "g" ]]; then
             amd
             install_pacman_packages
             install_yay_packages
-            hyprland_git
+            install_hyprland_git
             echo "Done!"
           else
             echo "Invalid option, type 'stable' or 'git'"
@@ -161,13 +161,13 @@ if [[ $install == "y" || $install == "yes" ]]; then
             intel
             install_pacman_packages
             install_yay_packages
-            hyprland_stable
+            install_hyprland_stable
             echo "Done!"
           elif [[ $hypr == "git" || $hypr == "g" ]]; then
             intel
             install_pacman_packages
             install_yay_packages
-            hyprland_git
+            install_hyprland_git
             echo "Done!"
           else
             echo "Invalid option, type 'stable' or 'git'"
