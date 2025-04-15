@@ -1,5 +1,12 @@
 #!/bin/bash
 
+ORANGE="$(tput setaf 214)"
+WARNING="$(tput setaf 196)"
+YELLOW="$(tput setaf 184)"
+GREEN="$(tput setaf 46)"
+SKY_BLUE="$(tput setaf 87)"
+RESET="$(tput sgr0)"
+
 pacman_packages=(
     "qt5-base"
     "qt5-wayland"
@@ -135,50 +142,50 @@ install_hyprland_git() {
     done
 }
 
-read -rp "Ready to install packages? (y/n): " install 
+read -rp "${SKY_BLUE}Ready to install packages? (y/n): ${RESET}" install 
 if [[ $install == "y" || $install == "yes" ]]; then
-  read -rp "AMD or Intel CPU? (amd/intel): " cpu
+  read -rp "${SKY_BLUE}AMD or Intel CPU? (amd/intel): ${RESET}" cpu
     if [[ $cpu == "amd" || $cpu == "AMD" ]]; then
-        read -rp "Hyprland stable or git version? (stable/git): " hypr
+        read -rp "${SKY_BLUE}Hyprland stable or git version? (stable/git): ${RESET}" hypr
           if [[ $hypr == "stable" || $hypr == "s" ]]; then
             amd
             install_pacman_packages
             install_yay_packages
             install_hyprland_stable
-            echo "Done!"
+            echo "${GREEN}Done!${RESET}"
           elif [[ $hypr == "git" || $hypr == "g" ]]; then
             amd
             install_pacman_packages
             install_yay_packages
             install_hyprland_git
-            echo "Done!"
+            echo "${GREEN}Done!${RESET}"
           else
-            echo "Invalid option, type 'stable' or 'git'"
+            echo "${WARNING}Invalid option, type 'stable' or 'git'${RESET}"
             exit 1
           fi
     elif [[ $cpu == "intel" || $cpu == "Intel" ]]; then
-        read -rp "Hyprland stable or git version? (stable/git): " hypr
+        read -rp "${SKY_BLUE}Hyprland stable or git version? (stable/git): ${RESET}" hypr
           if [[ $hypr == "stable" || $hypr == "s" ]]; then
             intel
             install_pacman_packages
             install_yay_packages
             install_hyprland_stable
-            echo "Done!"
+            echo "${GREEN}Done!${RESET}"
           elif [[ $hypr == "git" || $hypr == "g" ]]; then
             intel
             install_pacman_packages
             install_yay_packages
             install_hyprland_git
-            echo "Done!"
+            echo "${GREEN}Done!${RESET}"
           else
-            echo "Invalid option, type 'stable' or 'git'"
+            echo "${WARNING}Invalid option, type 'stable' or 'git'${RESET}"
             exit 1
           fi
     else
-        echo "Invalid input. type 'amd' or 'intel'"
+        echo "${WARNING}Invalid input. type 'amd' or 'intel'${RESET}"
         exit 1 
     fi
 else
-    echo "Exiting."
+    echo "${WARNING}Exited.${RESET}"
     exit 1
 fi
