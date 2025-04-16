@@ -22,6 +22,7 @@ if [[ $begin == "y" || $begin == "yes" ]]; then
     sudo pacman -S --needed --noconfirm base-devel linux-zen-headers
 
     bash ./scripts/yay.sh 
+    bash ./scripts/zsh.sh
 else
     echo "${WARNING}Exiting ...${RESET}"
     exit 1 

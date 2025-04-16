@@ -61,7 +61,6 @@ pacman_packages=(
     "lua-language-server"
     "vscode-html-languageserver"
     "vscode-css-languageserver"
-    
 )
 
 yay_packages=(
