@@ -15,6 +15,7 @@ echo "$(tput setaf 184)You should cancel this by hitting CTRL-C and read the scr
 echo ""
 sleep 0.5
 
+echo "${WARNING}You have to run the 'zsh.sh' script first !!!${RESET}"
 read -rp "${SKY_BLUE}Start install? (y/n): ${RESET}" begin
 if [[ $begin == "y" || $begin == "yes" ]]; then
     echo "${YELLOW}Updating system ...${RESET}"
@@ -22,7 +23,6 @@ if [[ $begin == "y" || $begin == "yes" ]]; then
     sudo pacman -S --needed --noconfirm base-devel linux-zen-headers
 
     bash ./scripts/yay.sh 
-    bash ./scripts/zsh.sh
 else
     echo "${WARNING}Exiting ...${RESET}"
     exit 1 
