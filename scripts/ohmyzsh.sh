@@ -151,11 +151,6 @@ setup_color() {
 }
 
 setup_ohmyzsh() {
-  # Prevent the cloned repository from having insecure permissions. Failing to do
-  # so causes compinit() calls to fail with "command not found: compdef" errors
-  # for users with insecure umasks (e.g., "002", allowing group writability). Note
-  # that this will be ignored under Cygwin by default, as Windows ACLs take
-  # precedence over umasks except for filesystems mounted with option "noacl".
   umask g-w,o-w
 
   echo "${FMT_BLUE}Cloning Oh My Zsh...${FMT_RESET}"
@@ -172,7 +167,6 @@ setup_ohmyzsh() {
     exit 1
   fi
 
-  # Manual clone with git config options to support git < v1.7.2
   git init --quiet "$ZSH" && cd "$ZSH" \
   && git config core.eol lf \
   && git config core.autocrlf false \
@@ -198,15 +192,10 @@ setup_ohmyzsh() {
 }
 
 setup_zshrc() {
-  # Keep most recent old .zshrc at .zshrc.pre-oh-my-zsh, and older ones
-  # with datestamp of installation that moved them aside, so we never actually
-  # destroy a user's original zshrc
   echo "${FMT_BLUE}Looking for an existing zsh config...${FMT_RESET}"
 
-  # Must use this exact name so uninstall.sh can find it
   OLD_ZSHRC="$zdot/.zshrc.pre-oh-my-zsh"
   if [ -f "$zdot/.zshrc" ] || [ -h "$zdot/.zshrc" ]; then
-    # Skip this if the user doesn't want to replace an existing .zshrc
     if [ "$KEEP_ZSHRC" = yes ]; then
       echo "${FMT_YELLOW}Found ${zdot}/.zshrc.${FMT_RESET} ${FMT_GREEN}Keeping...${FMT_RESET}"
       return
@@ -229,7 +218,6 @@ setup_zshrc() {
 
   echo "${FMT_GREEN}Using the Oh My Zsh template file and adding it to $zdot/.zshrc.${FMT_RESET}"
 
-  # Modify $ZSH variable in .zshrc directory to use the literal $ZDOTDIR or $HOME
   omz="$ZSH"
   if [ -n "$ZDOTDIR" ] && [ "$ZDOTDIR" != "$HOME" ]; then
     omz=$(echo "$omz" | sed "s|^$ZDOTDIR/|\$ZDOTDIR/|")
@@ -243,17 +231,14 @@ setup_zshrc() {
 }
 
 setup_shell() {
-  # Skip setup if the user wants or stdin is closed (not running interactively).
   if [ "$CHSH" = no ]; then
     return
   fi
 
-  # If this user's login shell is already "zsh", do not attempt to switch.
   if [ "$(basename -- "$SHELL")" = "zsh" ]; then
     return
   fi
 
-  # If this platform doesn't provide a "chsh" command, bail out.
   if ! command_exists chsh; then
     cat <<EOF
 I can't change your shell automatically because this system does not have chsh.
@@ -264,7 +249,6 @@ EOF
 
   echo "${FMT_BLUE}Time to change your default shell to zsh:${FMT_RESET}"
 
-  # Prompt for user choice on changing the default login shell
   printf '%sDo you want to change your default shell to zsh? [Y/n]%s ' \
     "$FMT_YELLOW" "$FMT_RESET"
   read -r opt
@@ -274,14 +258,12 @@ EOF
     *) echo "Invalid choice. Shell change skipped."; return ;;
   esac
 
-  # Check if we're running on Termux
   case "$PREFIX" in
     *com.termux*) termux=true; zsh=zsh ;;
     *) termux=false ;;
   esac
 
   if [ "$termux" != true ]; then
-    # Test for the right location of the "shells" file
     if [ -f /etc/shells ]; then
       shells_file=/etc/shells
     elif [ -f /usr/share/defaults/etc/shells ]; then # Solus OS
@@ -291,9 +273,6 @@ EOF
       return
     fi
 
-    # Get the path to the right zsh binary
-    # 1. Use the most preceding one based on $PATH, then check that it's in the shells file
-    # 2. If that fails, get a zsh path from the shells file, then check it actually exists
     if ! zsh=$(command -v zsh) || ! grep -qx "$zsh" "$shells_file"; then
       if ! zsh=$(grep '^/.*/zsh$' "$shells_file" | tail -n 1) || [ ! -f "$zsh" ]; then
         fmt_error "no zsh binary found or not present in '$shells_file'"
@@ -303,7 +282,6 @@ EOF
     fi
   fi
 
-  # We're going to change the default shell, so back up the current one
   if [ -n "$SHELL" ]; then
     echo "$SHELL" > "$zdot/.shell.pre-oh-my-zsh"
   else

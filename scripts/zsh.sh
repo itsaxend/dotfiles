@@ -16,7 +16,7 @@ else
 fi
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    bash ./ohmyzsh.sh
+    bash ./scripts/ohmyzsh.sh
 else
     echo "${YELLOW}Oh My Zsh is already installed.${RESET}"
     exit 1
