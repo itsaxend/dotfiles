@@ -16,7 +16,7 @@ else
 fi
 
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    bash ./ohmyzsh.sh
 else
     echo "${YELLOW}Oh My Zsh is already installed.${RESET}"
     exit 1
