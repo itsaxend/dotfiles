@@ -24,7 +24,7 @@ if [[ $begin == "y" || $begin == "yes" ]]; then
     bash ./scripts/zsh.sh
     bash ./scripts/yay.sh 
 else
-    echo "${WARNING}Exiting ...${RESET}"
+    echo "${WARNING}Exited.${RESET}"
     exit 1 
 fi
 
