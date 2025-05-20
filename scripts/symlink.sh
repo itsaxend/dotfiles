@@ -51,4 +51,5 @@ if [ -f "$HOME/.zshrc" ]; then
 fi
 
 ln -sf $HOME/dotfiles/ohmyzsh/themes $HOME/.oh-my-zsh/
+sed -i 's|^\(source "\$ZSH/tools/check_for_upgrade.sh"\)|# \1|' "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 ln -sf $HOME/dotfiles/.zshrc $HOME/
