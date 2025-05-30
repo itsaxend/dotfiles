@@ -12,29 +12,29 @@ if [[ $nvidia == "y" || $nvidia == "yes" ]]; then
     sed -i 's/^# \(source = $configs\/nvidia.conf\)/\1/' $HOME/dotfiles/config/hypr/hyprland.conf
 fi
 
-read -rp "${SKY_BLUE}Wanna symlink 'hypr' or copy it? (symlink/copy): ${RESET}" hypr
-if [[ $hypr == "symlink" || $hypr == "s" ]]; then
-    ln -sf $HOME/dotfiles/config/hypr/ $HOME/.config/
+read -rp "${SKY_BLUE}Wanna link 'hypr' or copy it? (link/copy): ${RESET}" hypr
+if [[ $hypr == "link" || $hypr == "l" ]]; then
+    ln -f $HOME/dotfiles/config/hypr/ $HOME/.config/
 elif [[ $hypr == "copy" || $hypr == "c" ]]; then
     cp -rf $HOME/dotfiles/config/hypr/ $HOME/.config/
 else
-  echo "${WARNING}Invalid option, choose 'symlink' or 'copy'${RESET}"
+  echo "${WARNING}Invalid option, choose 'link' or 'copy'${RESET}"
   exit 1
 fi
 
-ln -sf $HOME/dotfiles/config/cava/ $HOME/.config/
-ln -sf $HOME/dotfiles/config/nvim/ $HOME/.config/
-ln -sf $HOME/dotfiles/config/rofi/ $HOME/.config/
-ln -sf $HOME/dotfiles/config/kitty/ $HOME/.config/
-ln -sf $HOME/dotfiles/config/swaync/ $HOME/.config/
-ln -sf $HOME/dotfiles/config/waybar/ $HOME/.config/
-ln -sf $HOME/dotfiles/config/wallust/ $HOME/.config/
-ln -sf $HOME/dotfiles/config/fastfetch/ $HOME/.config/
+ln -f $HOME/dotfiles/config/cava/ $HOME/.config/
+ln -f $HOME/dotfiles/config/nvim/ $HOME/.config/
+ln -f $HOME/dotfiles/config/rofi/ $HOME/.config/
+ln -f $HOME/dotfiles/config/kitty/ $HOME/.config/
+ln -f $HOME/dotfiles/config/swaync/ $HOME/.config/
+ln -f $HOME/dotfiles/config/waybar/ $HOME/.config/
+ln -f $HOME/dotfiles/config/wallust/ $HOME/.config/
+ln -f $HOME/dotfiles/config/fastfetch/ $HOME/.config/
 
 if [ ! -d "$HOME/Pictures" ]; then
     mkdir -p $HOME/Pictures
 fi
-ln -sf $HOME/dotfiles/Wallpapers/ $HOME/Pictures/
+ln -f $HOME/dotfiles/Wallpapers/ $HOME/Pictures/
 
 if [ ! -d "$HOME/.local/share/icons" ]; then
     mkdir -p $HOME/.local/share/icons/
@@ -50,6 +50,6 @@ if [ -f "$HOME/.zshrc" ]; then
     rm -rf $HOME/.zshrc
 fi
 
-ln -sf $HOME/dotfiles/ohmyzsh/themes $HOME/.oh-my-zsh/
+ln -f $HOME/dotfiles/ohmyzsh/themes $HOME/.oh-my-zsh/
 sed -i 's|^\(source "\$ZSH/tools/check_for_upgrade.sh"\)|# \1|' "$HOME/.oh-my-zsh/oh-my-zsh.sh"
-ln -sf $HOME/dotfiles/.zshrc $HOME/
+ln -f $HOME/dotfiles/.zshrc $HOME/
