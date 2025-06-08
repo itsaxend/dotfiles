@@ -32,6 +32,6 @@ echo "installing packages ..."
 bash ./scripts/packages.sh
 
 echo "Symlink ..."
-bash ./scripts/symlink.sh
+bash ./scripts/link.sh
 echo "Done!"
 exit 1
