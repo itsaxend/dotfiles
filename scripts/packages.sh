@@ -31,6 +31,7 @@ declare -A PACKAGES=(
                  swaync
                  swww
                  grim
+                 slurp
                  mpv
                  imv
                  wf-recorder
