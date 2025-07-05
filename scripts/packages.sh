@@ -26,6 +26,7 @@ declare -A PACKAGES=(
                  fcitx5-unikey
                  fastfetch
                  kwindowsystem
+                 discord
                  waybar
                  neovim
                  swaync
@@ -34,6 +35,7 @@ declare -A PACKAGES=(
                  slurp
                  mpv
                  imv
+                 pyfiglet
                  wf-recorder
                  wl-clipboard
                  rofi-wayland
@@ -66,6 +68,8 @@ declare -A PACKAGES=(
                  vscode-css-languageserver'
 
     ["yay"]=$'wallust
+              microsoft-edge-stable-bin
+              spotify
               cava'
 
     ["hyprland_stable"]=$'hyprland
