@@ -20,11 +20,11 @@ app_names=("${!apps[@]}")
 # menu
 echo "${SKY_BLUE}Select applications to apply Wayland IME fix:${RESET}"
 for i in "${!app_names[@]}"; do
-    printf "%2d) %s\n" $((i+1)) "${app_names[$i]}"
+    printf "${YELLOW}%2d. %s\n" $((i+1)) "${app_names[$i]}${RESET}"
 done
 
 # parse input
-read -p "Enter numbers (e.g. 1,3 or 1-2): " input
+read -p "${SKY_BLUE}Enter numbers (e.g. 1,3 or 1-2): ${RESET}" input
 parse_selection() {
     local selection=()
     IFS=',' read -ra parts <<< "$1"
