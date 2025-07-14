@@ -46,8 +46,8 @@ for index in "${selected_indices[@]}"; do
     app_index=$((index-1))
     if [[ $app_index -ge 0 && $app_index -lt ${#app_names[@]} ]]; then
         app="${app_names[$app_index]}"
-        echo "${GREEN}Applying fix to $app...${RESET}"
         eval "${apps[$app]}"
+        echo "${GREEN}Applied fix to $app...${RESET}"
     else
         echo "${WARNING}Invalid selection: $index${RESET}"
     fi
