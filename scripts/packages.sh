@@ -35,6 +35,7 @@ declare -A PACKAGES=(
                  slurp
                  mpv
                  imv
+                 cliphist
                  tesseract
                  tesseract-data-vie
                  pyfiglet
