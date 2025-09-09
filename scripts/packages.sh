@@ -38,7 +38,7 @@ declare -A PACKAGES=(
                  cliphist
                  tesseract
                  tesseract-data-vie
-                 pyfiglet
+                 python-pyfiglet
                  wf-recorder
                  wl-clipboard
                  rofi-wayland
