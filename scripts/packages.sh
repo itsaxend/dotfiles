@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e  
+set -e
 
 ORANGE="$(tput setaf 214)"
 WARNING="$(tput setaf 196)"
@@ -10,7 +10,7 @@ RESET="$(tput sgr0)"
 
 # Define package lists for different managers
 declare -A PACKAGES=(
-    ["pacman"]=$'qt5-base
+  ["pacman"]=$'qt5-base
                  qt5-wayland
                  qt6-base
                  qt6-wayland
@@ -68,14 +68,17 @@ declare -A PACKAGES=(
                  ttf-sazanami
                  lua-language-server
                  vscode-html-languageserver
-                 vscode-css-languageserver'
+                 vscode-css-languageserver
+                 unzip
+                 tar
+                 curl'
 
-    ["yay"]=$'wallust
+  ["yay"]=$'wallust
               microsoft-edge-stable-bin
               spotify
               cava'
 
-    ["hyprland_stable"]=$'hyprland
+  ["hyprland_stable"]=$'hyprland
                           hyprlang
                           hyprutils
                           hyprgraphics
@@ -87,7 +90,7 @@ declare -A PACKAGES=(
                           xdg-desktop-portal-hyprland
                           xdg-desktop-portal-gtk'
 
-    ["hyprland_git"]=$'hyprland-git
+  ["hyprland_git"]=$'hyprland-git
                        hyprlang-git
                        hyprutils-git
                        hyprgraphics-git
@@ -101,35 +104,44 @@ declare -A PACKAGES=(
 )
 
 install_packages() {
-    local manager=$1
-    local package_list="${PACKAGES[$2]}"
+  local manager=$1
+  local package_list="${PACKAGES[$2]}"
 
-    echo "Installing $2 packages..."
-    if [[ "$manager" == "pacman" ]]; then
-        sudo pacman -S --needed --noconfirm $package_list
-    else
-        yay -S --needed --noconfirm $package_list
-    fi
+  echo "Installing $2 packages..."
+  if [[ "$manager" == "pacman" ]]; then
+    sudo pacman -S --needed --noconfirm $package_list
+  else
+    yay -S --needed --noconfirm $package_list
+  fi
 }
 
 install_microcode() {
-    local cpu="$1"
-    echo "Installing $cpu microcode..."
-    sudo pacman -S --noconfirm "${cpu}-ucode"
+  local cpu="$1"
+  echo "Installing $cpu microcode..."
+  sudo pacman -S --noconfirm "${cpu}-ucode"
 }
 
 # Get input
 read -rp "${SKY_BLUE}Ready to install packages? (y/n): ${RESET}" install
 install=$(echo "$install" | tr '[:upper:]' '[:lower:]')
-[[ "$install" =~ ^(y|yes)$ ]] || { echo "${WARNING}Exited.${RESET}"; exit 1; }
+[[ "$install" =~ ^(y|yes)$ ]] || {
+  echo "${WARNING}Exited.${RESET}"
+  exit 1
+}
 
 read -rp "${SKY_BLUE}AMD or Intel CPU? (amd/intel): ${RESET}" cpu
 cpu=$(echo "$cpu" | tr '[:upper:]' '[:lower:]')
-[[ "$cpu" =~ ^(amd|intel)$ ]] || { echo "${WARNING}Invalid CPU choice. Type 'amd' or 'intel'.${RESET}"; exit 1; }
+[[ "$cpu" =~ ^(amd|intel)$ ]] || {
+  echo "${WARNING}Invalid CPU choice. Type 'amd' or 'intel'.${RESET}"
+  exit 1
+}
 
 read -rp "${SKY_BLUE}Hyprland stable or git version? (stable/git): ${RESET}" hypr
 hypr=$(echo "$hypr" | tr '[:upper:]' '[:lower:]')
-[[ "$hypr" =~ ^(stable|git)$ ]] || { echo "${WARNING}Invalid Hyprland choice. Type 'stable' or 'git'.${RESET}"; exit 1; }
+[[ "$hypr" =~ ^(stable|git)$ ]] || {
+  echo "${WARNING}Invalid Hyprland choice. Type 'stable' or 'git'.${RESET}"
+  exit 1
+}
 
 # Run installations
 install_microcode "$cpu"
@@ -138,4 +150,3 @@ install_packages yay "yay"
 install_packages "${hypr/g/"yay"}" "hyprland_${hypr}"
 
 echo "${GREEN}Done!${RESET}"
-

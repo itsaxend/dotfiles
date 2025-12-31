@@ -7,14 +7,27 @@ local options = {
   formatters_by_ft = {
     lua = { "stylua" },
     python = { "black" },
+
     javascript = { "prettier" },
     typescript = { "prettier" },
     json = { "prettier" },
     yaml = { "prettier" },
     html = { "prettier" },
     css = { "prettier" },
-    go = { "gofmt" },
+
     sh = { "shfmt" },
+    bash = { "shfmt" },
+    zsh = { "shfmt" },
+    dotenv = { "shfmt" },
+
+    nginx = { "nginxfmt" },
+  },
+
+  formatters = {
+    nginxfmt = {
+      command = "nginxfmt",
+      stdin = true,
+    },
   },
 }
 
