@@ -1,8 +1,12 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls" }
-vim.lsp.enable(servers)
+-- config server
+vim.lsp.config("nginx_language_server", {})
 
-local lspconfig = require "lspconfig"
+-- enable servers
+vim.lsp.enable({
+  "html",
+  "cssls",
+  "nginx_language_server",
+})
 
-lspconfig.nginx_language_server.setup {}
