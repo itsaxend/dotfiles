@@ -1,5 +1,5 @@
 @import '../../.config/waybar/wallust/colors-waybar.css';
-
+/* SwayNC config  */
 @define-color noti-bg rgba(20, 20, 20, 0.7);
 @define-color noti-bg-alt rgba(0, 0, 0, 0.7);
 @define-color noti-border-color rgba(255, 255, 255, 0.8);
@@ -13,8 +13,8 @@
 
 /* notification styling */
 .notification {
-    /* background-color: transparent;  */
-    background-color: rgba(20, 20, 20, 0.7); 
+    background-color: transparent; 
+    /* background-color: rgba(20, 20, 20, 0.7);  */
     padding: 0;
     margin: 0;
     box-shadow: none;

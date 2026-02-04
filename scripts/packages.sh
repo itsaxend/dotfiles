@@ -30,6 +30,7 @@ declare -A PACKAGES=(
                  waybar
                  neovim
                  swaync
+                 swappy
                  swww
                  grim
                  slurp
@@ -88,7 +89,8 @@ declare -A PACKAGES=(
                           hyprland-protocols
                           hyprland-qt-support
                           xdg-desktop-portal-hyprland
-                          xdg-desktop-portal-gtk'
+                          xdg-desktop-portal-gtk
+                          xdg-desktop-portal'
 
   ["hyprland_git"]=$'hyprland-git
                        hyprlang-git

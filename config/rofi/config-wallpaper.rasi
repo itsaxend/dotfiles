@@ -1,4 +1,6 @@
-@import "~/.config/rofi/config.rasi" 
+/* Main Config (wallpaper) */
+
+@import "~/.config/rofi/config.rasi"  
 
 /* ---- Configuration ---- */ 
 configuration {
@@ -6,26 +8,33 @@ configuration {
 }
 
 window {
-  width: 60%;
+  width: 75%;
+  height: inherit;
 }
 
-/* ---- Imagebox ---- */
-imagebox {
-  orientation: vertical;
+/* ---- Mainbox ---- */
+mainbox {
   children:
-    [ "entry", "listbox"];
+    [ "inputbar", "listview"];
 }
-
 
 entry {
-  expand: false;
-  placeholder: "🎞️ Choose Wallpaper";
+  expand: true;
+  placeholder: " 󰸉 Choose Wallpaper";
+  horizontal-align: 0.01;
+  horizontal-align: 0.01;
 }
 
 /* ---- Listview ---- */
 listview {
-  columns: 4;
+  spacing: 20px;
+  padding: 10px;
+  columns: 6;
   lines: 3;
+  flow: horizontal;
+  fixed-width: true;
+  fixed-height: true;
+  cycle: true;
 }
 
 /* ---- Element ---- */
@@ -33,15 +42,23 @@ element {
   orientation: vertical;
   padding: 0px;
   spacing: 0px;
-  border-radius: 15px;
+  border-radius: 10px;
+  padding: 0px;
+  margin: 0px;
 }
 
+
+
 element-icon {
-  size: 20%;
+    text-color:                  inherit;
+    size:                        10%;
+    margin:                      -30px;
+    cursor:                      inherit;
 }
 
 element-text {
-  font: "Fira Code SemiBold 12";
   vertical-align: 0.5;
   horizontal-align: 0.5;
+  padding: 6px;
+  margin: 6px;
 }
