@@ -11,11 +11,11 @@ set -e  # Exit on error
 
 if ! command -v yay &> /dev/null; then
     echo "${GREEN}Installing yay...${RESET}"
-    git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
-    cd /tmp/yay-bin
+    git clone https://aur.archlinux.org/yay.git  /tmp/yay-bin
+    cd /tmp/yay
     makepkg -si --noconfirm
     cd -
-    rm -rf /tmp/yay-bin
+    rm -rf /tmp/yay
 else
     echo "${YELLOW}yay is already installed. Skipping...${RESET}"
 fi

@@ -1,7 +1,3 @@
-#!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-# This script for selecting wallpapers (SUPER W)
-
 # WALLPAPERS PATH
 terminal=kitty
 wallDIR="$HOME/Pictures/wallpapers"

@@ -50,6 +50,7 @@ declare -A PACKAGES=(
                  xdg-user-dirs
                  playerctl
                  nwg-look
+                 nwg-display
                  gvfs
                  brightnessctl
                  noto-fonts

@@ -1,7 +1,3 @@
-#!/bin/bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# For applying Pre-configured Monitor Profiles
-
 # Check if rofi is already running
 if pidof rofi > /dev/null; then
   pkill rofi

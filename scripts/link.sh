@@ -41,7 +41,7 @@ for dir in "${config_dirs[@]}"; do
 done
 
 mkdir -p "$HOME/Pictures"
-deploy "$HOME/dotfiles/Wallpapers/" "$HOME/Pictures/"
+deploy "$HOME/dotfiles/wallpapers/" "$HOME/Pictures/"
 
 mkdir -p "$HOME/.local/share/icons"
 deploy "$HOME/dotfiles/Bibata-Modern-Ice/" "$HOME/.local/share/icons/"
