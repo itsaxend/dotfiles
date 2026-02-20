@@ -33,5 +33,8 @@ bash ./scripts/packages.sh
 
 echo "Symlink ..."
 bash ./scripts/link.sh
+
+echo "Secure Boot..."
+bash ./scripts/secureboot.sh
 echo "Done!"
 exit 1
