@@ -35,6 +35,7 @@ declare -A PACKAGES=(
                  grim
                  slurp
                  mpv
+		             mpv-mpris
                  imv
                  cliphist
                  tesseract
@@ -50,7 +51,6 @@ declare -A PACKAGES=(
                  xdg-user-dirs
                  playerctl
                  nwg-look
-                 nwg-display
                  gvfs
                  brightnessctl
                  noto-fonts
@@ -73,20 +73,21 @@ declare -A PACKAGES=(
                  vscode-css-languageserver
                  unzip
                  tar
-                 curl'
+                 curl
+                 pamixer'
 
   ["yay"]=$'wallust
               microsoft-edge-stable-bin
               spotify
-              cava'
+              cava
+	            mpvpaper'
 
   ["hyprland_stable"]=$'hyprland
                           hyprlang
                           hyprutils
-                          hyprgraphics
+                       	  hyprgraphics
                           hyprcursor
                           hyprpolkitagent
-                          hyprland-qtutils
                           hyprland-protocols
                           hyprland-qt-support
                           xdg-desktop-portal-hyprland
@@ -99,7 +100,6 @@ declare -A PACKAGES=(
                        hyprgraphics-git
                        hyprcursor-git
                        hyprpolkitagent-git
-                       hyprland-qtutils-git
                        hyprland-protocols-git
                        hyprland-qt-support-git
                        xdg-desktop-portal-hyprland-git
