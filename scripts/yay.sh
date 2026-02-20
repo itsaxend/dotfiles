@@ -11,7 +11,7 @@ set -e  # Exit on error
 
 if ! command -v yay &> /dev/null; then
     echo "${GREEN}Installing yay...${RESET}"
-    git clone https://aur.archlinux.org/yay.git  /tmp/yay-bin
+    git clone https://aur.archlinux.org/yay.git  /tmp/yay
     cd /tmp/yay
     makepkg -si --noconfirm
     cd -
