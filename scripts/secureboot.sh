@@ -8,8 +8,7 @@ GREEN="$(tput setaf 46)"
 BLUE="$(tput setaf 87)"
 RESET="$(tput sgr0)"
 
-echo -e "${BLUE}Do you want to setup Secure Boot? (y/n)${RESET}"
-read -r confirm
+read -rp "${BLUE}Do you want to setup Secure Boot? (y/n)${RESET}" confirm
 
 if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
     echo -e "${YELLOW}Canceled. Secure Boot setup aborted.${RESET}"
